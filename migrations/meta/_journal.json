@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1751808942205,
+      "tag": "0000_flat_wendigo",
+      "breakpoints": true
+    }
+  ]
+}
