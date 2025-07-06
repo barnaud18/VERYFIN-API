@@ -678,6 +678,24 @@ app.post('/api/expenses', requireAuth, async (req, res) => {
 });
 
 // Goals routes
+/**
+ * @swagger
+ * /api/goals:
+ *   get:
+ *     summary: Listar metas do usuário
+ *     tags: [Goals]
+ *     responses:
+ *       200:
+ *         description: Lista de metas
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Goal'
+ *       401:
+ *         description: Não autenticado
+ */
 app.get('/api/goals', requireAuth, async (req, res) => {
   try {
     const userId = req.session.userId;
@@ -689,6 +707,30 @@ app.get('/api/goals', requireAuth, async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/goals:
+ *   post:
+ *     summary: Criar nova meta
+ *     tags: [Goals]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/GoalInput'
+ *     responses:
+ *       201:
+ *         description: Meta criada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Goal'
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Não autenticado
+ */
 app.post('/api/goals', requireAuth, async (req, res) => {
   try {
     const userId = req.session.userId;
@@ -711,6 +753,36 @@ app.post('/api/goals', requireAuth, async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/goals/{id}:
+ *   put:
+ *     summary: Atualizar meta
+ *     tags: [Goals]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/GoalInput'
+ *     responses:
+ *       200:
+ *         description: Meta atualizada
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Goal'
+ *       404:
+ *         description: Meta não encontrada
+ *       401:
+ *         description: Não autenticado
+ */
 app.put('/api/goals/:id', requireAuth, async (req, res) => {
   try {
     const userId = req.session.userId;
@@ -744,6 +816,26 @@ app.put('/api/goals/:id', requireAuth, async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/goals/{id}:
+ *   delete:
+ *     summary: Excluir meta
+ *     tags: [Goals]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       204:
+ *         description: Meta excluída
+ *       404:
+ *         description: Meta não encontrada
+ *       401:
+ *         description: Não autenticado
+ */
 app.delete('/api/goals/:id', requireAuth, async (req, res) => {
   try {
     const userId = req.session.userId;
@@ -767,6 +859,24 @@ app.delete('/api/goals/:id', requireAuth, async (req, res) => {
 });
 
 // Budgets routes
+/**
+ * @swagger
+ * /api/budgets:
+ *   get:
+ *     summary: Listar orçamentos do usuário
+ *     tags: [Budgets]
+ *     responses:
+ *       200:
+ *         description: Lista de orçamentos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Budget'
+ *       401:
+ *         description: Não autenticado
+ */
 app.get('/api/budgets', requireAuth, async (req, res) => {
   try {
     const userId = req.session.userId;
@@ -778,6 +888,30 @@ app.get('/api/budgets', requireAuth, async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/budgets:
+ *   post:
+ *     summary: Criar novo orçamento
+ *     tags: [Budgets]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/BudgetInput'
+ *     responses:
+ *       201:
+ *         description: Orçamento criado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Budget'
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Não autenticado
+ */
 app.post('/api/budgets', requireAuth, async (req, res) => {
   try {
     const userId = req.session.userId;
@@ -798,6 +932,24 @@ app.post('/api/budgets', requireAuth, async (req, res) => {
 });
 
 // Streaks routes
+/**
+ * @swagger
+ * /api/streaks:
+ *   get:
+ *     summary: Listar streaks do usuário
+ *     tags: [Streaks]
+ *     responses:
+ *       200:
+ *         description: Lista de streaks
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Streak'
+ *       401:
+ *         description: Não autenticado
+ */
 app.get('/api/streaks', requireAuth, async (req, res) => {
   try {
     const userId = req.session.userId;
@@ -809,6 +961,30 @@ app.get('/api/streaks', requireAuth, async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/streaks:
+ *   post:
+ *     summary: Criar novo streak
+ *     tags: [Streaks]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/StreakInput'
+ *     responses:
+ *       201:
+ *         description: Streak criado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Streak'
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Não autenticado
+ */
 app.post('/api/streaks', requireAuth, async (req, res) => {
   try {
     const userId = req.session.userId;
